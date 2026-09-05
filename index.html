@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Study Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f6f3ff;
+    color: #29243d;
+}
+
+header {
+    background: #7657d9;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+header p {
+    margin: 8px 0 0;
+    opacity: 0.9;
+}
+
+main {
+    max-width: 700px;
+    margin: auto;
+    padding: 25px 18px 50px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 22px;
+    margin: 16px 0;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
+
+.subject-button {
+    width: 100%;
+    margin: 8px 0;
+    padding: 20px;
+    font-size: 19px;
+    text-align: left;
+    border: none;
+    border-radius: 18px;
+    background: white;
+    color: #29243d;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    cursor: pointer;
+}
+
+.subject-button:hover {
+    transform: translateY(-2px);
+}
+
+button {
+    border: none;
+    border-radius: 14px;
+    padding: 13px 18px;
+    margin: 6px;
+    font-size: 16px;
+    background: #7657d9;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.back {
+    background: #ded8f7;
+    color: #29243d;
+}
+
+.lesson-button {
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.flashcard {
+    min-height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}
+
+.score {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+#answers {
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 My Study Hub</h1>
+    <p>Learn • Review • Practice</p>
+</header>
+
+<main>
+
+<!-- HOME -->
+
+<section id="home">
+
+    <h2>Welcome! 👋</h2>
+
+    <p>Choose a subject to start studying.</p>
+
+    <button class="subject-button" onclick="openSection('english')">
+        📖 English
+    </button>
+
+    <button class="subject-button" onclick="comingSoon('Math')">
+        ➗ Math
+    </button>
+
+    <button class="subject-button" onclick="comingSoon('Science')">
+        🔬 Science
+    </button>
+
+</section>
+
+
+<!-- ENGLISH -->
+
+<section id="english" class="hidden">
+
+    <button class="back" onclick="openSection('home')">
+        ← Home
+    </button>
+
+    <h2>📖 English</h2>
+
+    <div class="card">
+
+        <h3>📕 Eleven</h3>
+
+        <p>By Sandra Cisneros</p>
+
+        <button onclick="openSection('study')">
+            📚 Study
+        </button>
+
+        <button onclick="openSection('flashcards')">
+            🃏 Flashcards
+        </button>
+
+        <button onclick="startQuiz()">
+            🧠 Quiz
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- STUDY -->
+
+<section id="study" class="hidden">
+
+    <button class="back" onclick="openSection('english')">
+        ← Back
+    </button>
+
+    <h2>📚 Eleven — Study</h2>
+
+    <div class="card">
+
+        <h3>📝 Summary</h3>
+
+        <p>
+            Rachel is turning eleven. She realizes that growing older
+            does not make her younger selves disappear. When Mrs. Price
+            makes her wear a red sweater that Rachel says is not hers,
+            Rachel becomes embarrassed and upset.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>🎯 Main Theme</h3>
+
+        <p>
+            Growing older does not erase your past experiences or
+            the younger parts of yourself.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>👤 Rachel</h3>
+
+        <p>
+            Rachel is thoughtful and sensitive. She feels frustrated
+            because she knows the sweater is not hers, but her teacher
+            does not listen to her.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>👩‍🏫 Mrs. Price</h3>
+
+        <p>
+            Mrs. Price is Rachel's teacher. She incorrectly believes
+            that the red sweater belongs to Rachel and makes Rachel
+            put it on.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>👕 The Red Sweater</h3>
+
+        <p>
+            The sweater represents Rachel's embarrassment, frustration,
+            and feeling of being misunderstood.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>🔍 Figurative Language</h3>
+
+        <p>
+            <strong>Simile:</strong> Rachel compares the sweater to
+            a big red mountain.
+        </p>
+
+        <p>
+            <strong>Simile:</strong> The sweater hanging from the desk
+            is compared to a waterfall.
+        </p>
+
+        <p>
+            Rachel's younger ages represent the idea that her past
+            remains part of who she is.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FLASHCARDS -->
+
+<section id="flashcards" class="hidden">
+
+    <button class="back" onclick="openSection('english')">
+        ← Back
+    </button>
+
+    <h2>🃏 Flashcards</h2>
+
+    <p class="center">
+        Tap the card to flip it.
+    </p>
+
+    <div class="card flashcard" onclick="flipCard()">
+
+        <div id="flashcardText">
+            What is the main theme of "Eleven"?
+        </div>
+
+    </div>
+
+    <div class="center">
+
+        <button onclick="previousCard()">
+            ⬅️ Previous
+        </button>
+
+        <button onclick="nextCard()">
+            Next ➡️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz" class="hidden">
+
+    <button class="back" onclick="openSection('english')">
+        ← Back
+    </button>
+
+    <h2>🧠 Eleven Quiz</h2>
+
+    <div class="card">
+
+        <h3 id="question"></h3>
+
+        <div id="answers"></div>
+
+        <p id="quizMessage"></p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* PAGE NAVIGATION */
+
+function openSection(name) {
+
+    document.querySelectorAll("section").forEach(function(section) {
+        section.classList.add("hidden");
+    });
+
+    document.getElementById(name).classList.remove("hidden");
+}
+
+
+function comingSoon(subject) {
+    alert(subject + " is coming soon! 🚀");
+}
+
+
+/* FLASHCARDS */
+
+const flashcards = [
+
+    {
+        question: "What is the main theme of 'Eleven'?",
+        answer: "Growing older does not erase your past experiences or younger selves."
+    },
+
+    {
+        question: "How old is Rachel?",
+        answer: "Rachel is eleven years old."
+    },
+
+    {
+        question: "Why does Rachel become upset?",
+        answer: "Mrs. Price makes her wear a red sweater that Rachel says is not hers."
+    },
+
+    {
+        question: "Who actually owns the red sweater?",
+        answer: "Phyllis Lopez."
+    },
+
+    {
+        question: "What does the red sweater represent?",
+        answer: "Rachel's embarrassment, frustration, and feeling of being misunderstood."
+    },
+
+    {
+        question: "What is one simile used to describe the sweater?",
+        answer: "Rachel compares the sweater to a big red mountain."
+    }
+
+];
+
+let currentCard = 0;
+let showingAnswer = false;
+
+
+function flipCard() {
+
+    showingAnswer = !showingAnswer;
+
+    if (showingAnswer) {
+
+        document.getElementById("flashcardText").textContent =
+            flashcards[currentCard].answer;
+
+    } else {
+
+        document.getElementById("flashcardText").textContent =
+            flashcards[currentCard].question;
+
+    }
+}
+
+
+function nextCard() {
+
+    currentCard++;
+
+    if (currentCard >= flashcards.length) {
+        currentCard = 0;
+    }
+
+    showingAnswer = false;
+
+    document.getElementById("flashcardText").textContent =
+        flashcards[currentCard].question;
+}
+
+
+function previousCard() {
+
+    currentCard--;
+
+    if (currentCard < 0) {
+        currentCard = flashcards.length - 1;
+    }
+
+    showingAnswer = false;
+
+    document.getElementById("flashcardText").textContent =
+        flashcards[currentCard].question;
+}
+
+
+/* QUIZ */
+
+const questions = [
+
+    {
+        question: "How old is Rachel?",
+        answers: ["9", "10", "11", "12"],
+        correct: 2
+    },
+
+    {
+        question: "Who makes Rachel wear the red sweater?",
+        answers: [
+            "Phyllis",
+            "Mrs. Price",
+            "Sylvia",
+            "Rachel's mother"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Who does the red sweater actually belong to?",
+        answers: [
+            "Rachel",
+            "Sylvia",
+            "Phyllis Lopez",
+            "Mrs. Price"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "What is an important idea in the story?",
+        answers: [
+            "Growing older erases your past.",
+            "You never change as you grow.",
+            "Your younger experiences remain part of you.",
+            "Teachers are always correct."
+        ],
+        correct: 2
+    },
+
+    {
+        question: "What does the red sweater symbolize?",
+        answers: [
+            "Happiness",
+            "Rachel's embarrassment and frustration",
+            "Friendship",
+            "School success"
+        ],
+        correct: 1
+    }
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+
+function startQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+
+    openSection("quiz");
+
+    showQuestion();
+}
+
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    if (!q) {
+
+        document.getElementById("question").textContent =
+            "🎉 Quiz Complete!";
+
+        document.getElementById("answers").innerHTML =
+            "<p class='score'>You scored " +
+            score +
+            " out of " +
+            questions.length +
+            "!</p>" +
+            "<button onclick='startQuiz()'>🔄 Try Again</button>";
+
+        return;
+    }
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    document.getElementById("quizMessage").textContent = "";
+
+    const answers = document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+    q.answers.forEach(function(answer, index) {
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent = answer;
+
+        button.onclick = function() {
+            answerQuestion(index);
+        };
+
+        answers.appendChild(button);
+
+    });
+}
+
+
+function answerQuestion(selected) {
+
+    const q = questions[currentQuestion];
+
+    if (selected === q.correct) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    showQuestion();
+}
+
+
+/* START AT HOME */
+
+openSection("home");
+
+</script>
+
+</body>
+</html>
