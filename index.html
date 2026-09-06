@@ -1,598 +1,1031 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Study Hub</title>
 
-<title>My Study Hub</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #eaf6ff, #f3f9ff);
+      color: #222;
+    }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #f6f3ff;
-    color: #29243d;
-}
+    header {
+      background: #2477c8;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
 
-header {
-    background: #7657d9;
-    color: white;
-    text-align: center;
-    padding: 35px 20px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
 
-header h1 {
-    margin: 0;
-    font-size: 34px;
-}
+    header p {
+      margin: 8px 0 0;
+    }
 
-header p {
-    margin: 8px 0 0;
-    opacity: 0.9;
-}
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px;
+    }
 
-main {
-    max-width: 700px;
-    margin: auto;
-    padding: 25px 18px 50px;
-}
+    .section {
+      display: none;
+    }
 
-h2 {
-    font-size: 28px;
-}
+    .section.active {
+      display: block;
+    }
 
-.card {
-    background: white;
-    border-radius: 22px;
-    padding: 22px;
-    margin: 16px 0;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-}
+    h2 {
+      color: #2477c8;
+      margin-top: 25px;
+    }
 
-.subject-button {
-    width: 100%;
-    margin: 8px 0;
-    padding: 20px;
-    font-size: 19px;
-    text-align: left;
-    border: none;
-    border-radius: 18px;
-    background: white;
-    color: #29243d;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    cursor: pointer;
-}
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
 
-.subject-button:hover {
-    transform: translateY(-2px);
-}
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-button {
-    border: none;
-    border-radius: 14px;
-    padding: 13px 18px;
-    margin: 6px;
-    font-size: 16px;
-    background: #7657d9;
-    color: white;
-    cursor: pointer;
-}
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(36,119,200,0.18);
+    }
 
-button:hover {
-    opacity: 0.85;
-}
+    .card h3 {
+      margin-top: 0;
+      color: #2477c8;
+    }
 
-.back {
-    background: #ded8f7;
-    color: #29243d;
-}
+    button {
+      border: none;
+      background: #2477c8;
+      color: white;
+      padding: 11px 17px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 15px;
+    }
 
-.lesson-button {
-    width: 100%;
-    padding: 20px;
-    text-align: left;
-    font-size: 18px;
-}
+    button:hover {
+      opacity: 0.85;
+    }
 
-.option {
-    display: block;
-    width: 100%;
-    margin: 8px 0;
-}
+    button:disabled {
+      cursor: default;
+    }
 
-.hidden {
-    display: none;
-}
+    .lesson-box {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      margin: 18px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
 
-.flashcard {
-    min-height: 190px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 23px;
-    cursor: pointer;
-}
+    .lesson-box h3 {
+      color: #2477c8;
+    }
 
-.center {
-    text-align: center;
-}
+    .example {
+      background: #eaf5ff;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 12px;
+      font-size: 17px;
+      border-left: 4px solid #2477c8;
+    }
 
-.score {
-    font-size: 21px;
-    font-weight: bold;
-}
+    .tip {
+      background: #fff4c2;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
 
-#answers {
-    margin-top: 15px;
-}
-</style>
+    .flashcard {
+      background: white;
+      min-height: 220px;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .flashcard h3 {
+      font-size: 23px;
+      color: #2477c8;
+    }
+
+    .flashcard p {
+      font-size: 19px;
+      margin-top: 25px;
+    }
+
+    .card-count {
+      color: #2477c8;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      margin: 18px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+
+    .question h3 {
+      color: #2477c8;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #eaf5ff;
+      color: #222;
+      margin: 8px 0;
+    }
+
+    .option:hover {
+      background: #cfe9ff;
+    }
+
+    .score {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 20px 0;
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      color: #2477c8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <h1>📚 My Study Hub</h1>
-    <p>Learn • Review • Practice</p>
+  <h1>📚 My Study Hub</h1>
+  <p>Learn • Practice • Succeed</p>
 </header>
 
 <main>
 
 <!-- HOME -->
+<div id="home" class="section active">
+  <h2>Welcome! 👋</h2>
+  <p>Choose a subject to start studying.</p>
 
-<section id="home">
+  <div class="card-grid">
 
-    <h2>Welcome! 👋</h2>
+    <div class="card" onclick="openSection('english')">
+      <h3>📖 English</h3>
+      <p>Literature & Language</p>
+    </div>
 
-    <p>Choose a subject to start studying.</p>
+    <div class="card" onclick="openSection('math')">
+      <h3>➗ Math</h3>
+      <p>Fractions & Decimals</p>
+    </div>
 
-    <button class="subject-button" onclick="openSection('english')">
-        📖 English
-    </button>
-
-    <button class="subject-button" onclick="comingSoon('Math')">
-        ➗ Math
-    </button>
-
-    <button class="subject-button" onclick="comingSoon('Science')">
-        🔬 Science
-    </button>
-
-</section>
+  </div>
+</div>
 
 
 <!-- ENGLISH -->
+<div id="english" class="section">
 
-<section id="english" class="hidden">
+  <button onclick="openSection('home')">← Home</button>
 
-    <button class="back" onclick="openSection('home')">
-        ← Home
-    </button>
+  <h2>📖 English</h2>
 
-    <h2>📖 English</h2>
+  <div class="card-grid">
 
-    <div class="card">
-
-        <h3>📕 Eleven</h3>
-
-        <p>By Sandra Cisneros</p>
-
-        <button onclick="openSection('study')">
-            📚 Study
-        </button>
-
-        <button onclick="openSection('flashcards')">
-            🃏 Flashcards
-        </button>
-
-        <button onclick="startQuiz()">
-            🧠 Quiz
-        </button>
-
+    <div class="card" onclick="openSection('eleven')">
+      <h3>📕 Eleven</h3>
+      <p>Sandra Cisneros</p>
     </div>
 
-</section>
+  </div>
+</div>
 
 
-<!-- STUDY -->
+<!-- ELEVEN -->
+<div id="eleven" class="section">
 
-<section id="study" class="hidden">
+  <button onclick="openSection('english')">← English</button>
 
-    <button class="back" onclick="openSection('english')">
-        ← Back
-    </button>
+  <h2>📕 Eleven</h2>
 
-    <h2>📚 Eleven — Study</h2>
+  <div class="card-grid">
 
-    <div class="card">
-
-        <h3>📝 Summary</h3>
-
-        <p>
-            Rachel is turning eleven. She realizes that growing older
-            does not make her younger selves disappear. When Mrs. Price
-            makes her wear a red sweater that Rachel says is not hers,
-            Rachel becomes embarrassed and upset.
-        </p>
-
+    <div class="card" onclick="openSection('eleven-study')">
+      <h3>📚 Study</h3>
+      <p>Learn the important ideas.</p>
     </div>
 
-    <div class="card">
-
-        <h3>🎯 Main Theme</h3>
-
-        <p>
-            Growing older does not erase your past experiences or
-            the younger parts of yourself.
-        </p>
-
+    <div class="card" onclick="openSection('eleven-flashcards')">
+      <h3>🃏 Flashcards</h3>
+      <p>Review key ideas.</p>
     </div>
 
-    <div class="card">
-
-        <h3>👤 Rachel</h3>
-
-        <p>
-            Rachel is thoughtful and sensitive. She feels frustrated
-            because she knows the sweater is not hers, but her teacher
-            does not listen to her.
-        </p>
-
+    <div class="card" onclick="openSection('eleven-quiz')">
+      <h3>🧠 Quiz</h3>
+      <p>Test yourself.</p>
     </div>
 
-    <div class="card">
-
-        <h3>👩‍🏫 Mrs. Price</h3>
-
-        <p>
-            Mrs. Price is Rachel's teacher. She incorrectly believes
-            that the red sweater belongs to Rachel and makes Rachel
-            put it on.
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <h3>👕 The Red Sweater</h3>
-
-        <p>
-            The sweater represents Rachel's embarrassment, frustration,
-            and feeling of being misunderstood.
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <h3>🔍 Figurative Language</h3>
-
-        <p>
-            <strong>Simile:</strong> Rachel compares the sweater to
-            a big red mountain.
-        </p>
-
-        <p>
-            <strong>Simile:</strong> The sweater hanging from the desk
-            is compared to a waterfall.
-        </p>
-
-        <p>
-            Rachel's younger ages represent the idea that her past
-            remains part of who she is.
-        </p>
-
-    </div>
-
-</section>
+  </div>
+</div>
 
 
-<!-- FLASHCARDS -->
+<!-- ELEVEN STUDY -->
+<div id="eleven-study" class="section">
 
-<section id="flashcards" class="hidden">
+  <button onclick="openSection('eleven')">← Eleven</button>
 
-    <button class="back" onclick="openSection('english')">
-        ← Back
-    </button>
+  <h2>📚 Study: Eleven</h2>
 
-    <h2>🃏 Flashcards</h2>
+  <div class="lesson-box">
+    <h3>⭐ Main Idea</h3>
+    <p>
+      Rachel is turning eleven, but she realizes that growing older
+      does not make her forget the younger versions of herself.
+      Her past experiences are still part of who she is.
+    </p>
+  </div>
 
-    <p class="center">
-        Tap the card to flip it.
+  <div class="lesson-box">
+    <h3>👧 Rachel</h3>
+    <p>
+      Rachel is the main character. She feels embarrassed and
+      frustrated when her teacher wrongly says that a red sweater
+      belongs to her.
+    </p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>👕 The Red Sweater</h3>
+    <p>
+      The sweater represents Rachel's embarrassment and frustration.
+      She knows it is not hers, but she feels powerless to speak up.
+    </p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>💭 Important Idea</h3>
+    <p>
+      Rachel learns that growing older does not mean you suddenly
+      feel completely grown-up. Sometimes you can still feel like
+      your younger self.
+    </p>
+  </div>
+
+  <div class="lesson-box">
+    <h3>✨ Figurative Language</h3>
+
+    <p>
+      The story uses comparisons to describe the sweater and Rachel's
+      feelings.
     </p>
 
-    <div class="card flashcard" onclick="flipCard()">
+    <ul>
+      <li>The sweater is compared to a big red mountain.</li>
+      <li>The sweater is compared to a waterfall.</li>
+      <li>Rachel's younger ages represent the experiences that remain
+        part of her as she grows.</li>
+    </ul>
+  </div>
 
-        <div id="flashcardText">
-            What is the main theme of "Eleven"?
-        </div>
+</div>
 
+
+<!-- ELEVEN FLASHCARDS -->
+<div id="eleven-flashcards" class="section">
+
+  <button onclick="openSection('eleven')">← Eleven</button>
+
+  <h2>🃏 Eleven Flashcards</h2>
+
+  <div class="flashcard">
+
+    <h3 id="english-card-question">Question</h3>
+
+    <p id="english-card-answer" class="answer"></p>
+
+    <button onclick="showEnglishAnswer()">Show Answer</button>
+
+    <button onclick="nextEnglishCard()">Next →</button>
+
+    <p id="english-card-count" class="card-count"></p>
+
+  </div>
+
+</div>
+
+
+<!-- ELEVEN QUIZ -->
+<div id="eleven-quiz" class="section">
+
+  <button onclick="openSection('eleven')">← Eleven</button>
+
+  <h2>🧠 Eleven Quiz</h2>
+
+  <div id="english-quiz-container"></div>
+
+</div>
+
+
+<!-- MATH -->
+<div id="math" class="section">
+
+  <button onclick="openSection('home')">← Home</button>
+
+  <h2>➗ Math</h2>
+
+  <div class="card-grid">
+
+    <div class="card" onclick="openSection('fractions')">
+      <h3>🔢 Fractions & Decimals</h3>
+      <p>Multiplying • Dividing • Adding • Subtracting</p>
     </div>
 
-    <div class="center">
+  </div>
 
-        <button onclick="previousCard()">
-            ⬅️ Previous
-        </button>
+</div>
 
-        <button onclick="nextCard()">
-            Next ➡️
-        </button>
 
+<!-- FRACTIONS & DECIMALS -->
+<div id="fractions" class="section">
+
+  <button onclick="openSection('math')">← Math</button>
+
+  <h2>🔢 Fractions & Decimals</h2>
+
+  <div class="card-grid">
+
+    <div class="card" onclick="openSection('math-study')">
+      <h3>📚 Study</h3>
+      <p>Learn the rules and examples.</p>
     </div>
 
-</section>
-
-
-<!-- QUIZ -->
-
-<section id="quiz" class="hidden">
-
-    <button class="back" onclick="openSection('english')">
-        ← Back
-    </button>
-
-    <h2>🧠 Eleven Quiz</h2>
-
-    <div class="card">
-
-        <h3 id="question"></h3>
-
-        <div id="answers"></div>
-
-        <p id="quizMessage"></p>
-
+    <div class="card" onclick="openSection('math-flashcards')">
+      <h3>🃏 Flashcards</h3>
+      <p>Practice the rules.</p>
     </div>
 
-</section>
+    <div class="card" onclick="openSection('math-quiz')">
+      <h3>🧠 Quiz</h3>
+      <p>Test your math skills.</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MATH STUDY -->
+<div id="math-study" class="section">
+
+  <button onclick="openSection('fractions')">← Fractions & Decimals</button>
+
+  <h2>📚 Math Study</h2>
+
+  <div class="lesson-box">
+
+    <h3>1️⃣ Multiplying Decimals</h3>
+
+    <p>
+      Multiply the numbers as if there are no decimal points.
+      Then count the total number of decimal places in the original
+      numbers and put the decimal point into the answer.
+    </p>
+
+    <div class="example">
+      <strong>Example:</strong><br>
+      2.4 × 1.3 = 3.12
+    </div>
+
+  </div>
+
+
+  <div class="lesson-box">
+
+    <h3>2️⃣ Multiplying Fractions</h3>
+
+    <p>
+      Multiply the numerators together and multiply the denominators
+      together.
+    </p>
+
+    <div class="example">
+      <strong>Example:</strong><br>
+      2/3 × 4/5 = 8/15
+    </div>
+
+    <div class="tip">
+      💡 Simplify your answer if possible.
+    </div>
+
+  </div>
+
+
+  <div class="lesson-box">
+
+    <h3>3️⃣ Dividing Fractions</h3>
+
+    <p>
+      Use <strong>Keep, Change, Flip</strong>.
+    </p>
+
+    <ul>
+      <li>Keep the first fraction.</li>
+      <li>Change division to multiplication.</li>
+      <li>Flip the second fraction.</li>
+    </ul>
+
+    <div class="example">
+      <strong>Example:</strong><br>
+      2/3 ÷ 4/5<br>
+      = 2/3 × 5/4<br>
+      = 10/12<br>
+      = 5/6
+    </div>
+
+  </div>
+
+
+  <div class="lesson-box">
+
+    <h3>4️⃣ Adding Fractions</h3>
+
+    <p>
+      If the denominators are the same, add the numerators and keep
+      the denominator.
+    </p>
+
+    <div class="example">
+      <strong>Example:</strong><br>
+      2/7 + 3/7 = 5/7
+    </div>
+
+    <p>
+      If the denominators are different, find a common denominator
+      first.
+    </p>
+
+    <div class="example">
+      <strong>Example:</strong><br>
+      1/2 + 1/4 = 2/4 + 1/4 = 3/4
+    </div>
+
+  </div>
+
+
+  <div class="lesson-box">
+
+    <h3>5️⃣ Subtracting Fractions</h3>
+
+    <p>
+      Make sure the fractions have a common denominator, then
+      subtract the numerators.
+    </p>
+
+    <div class="example">
+      <strong>Example:</strong><br>
+      5/6 − 2/6 = 3/6 = 1/2
+    </div>
+
+    <div class="example">
+      <strong>Another example:</strong><br>
+      3/4 − 1/2<br>
+      = 3/4 − 2/4<br>
+      = 1/4
+    </div>
+
+  </div>
+
+
+  <div class="lesson-box">
+
+    <h3>⭐ Remember</h3>
+
+    <ul>
+      <li>Always simplify fractions when possible.</li>
+      <li>For addition and subtraction, denominators need to match.</li>
+      <li>For multiplication, multiply straight across.</li>
+      <li>For division, Keep → Change → Flip.</li>
+      <li>For decimals, carefully count decimal places.</li>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<!-- MATH FLASHCARDS -->
+<div id="math-flashcards" class="section">
+
+  <button onclick="openSection('fractions')">← Fractions & Decimals</button>
+
+  <h2>🃏 Math Flashcards</h2>
+
+  <div class="flashcard">
+
+    <h3 id="math-card-question">Question</h3>
+
+    <p id="math-card-answer" class="answer"></p>
+
+    <button onclick="showMathAnswer()">Show Answer</button>
+
+    <button onclick="nextMathCard()">Next →</button>
+
+    <p id="math-card-count" class="card-count"></p>
+
+  </div>
+
+</div>
+
+
+<!-- MATH QUIZ -->
+<div id="math-quiz" class="section">
+
+  <button onclick="openSection('fractions')">← Fractions & Decimals</button>
+
+  <h2>🧠 Math Quiz</h2>
+
+  <div id="math-quiz-container"></div>
+
+</div>
 
 </main>
 
 
 <script>
 
-/* PAGE NAVIGATION */
+  // =========================
+  // NAVIGATION
+  // =========================
 
-function openSection(name) {
+  function openSection(id) {
 
-    document.querySelectorAll("section").forEach(function(section) {
-        section.classList.add("hidden");
+    document.querySelectorAll(".section").forEach(function(section) {
+      section.classList.remove("active");
     });
 
-    document.getElementById(name).classList.remove("hidden");
-}
+    const section = document.getElementById(id);
 
-
-function comingSoon(subject) {
-    alert(subject + " is coming soon! 🚀");
-}
-
-
-/* FLASHCARDS */
-
-const flashcards = [
-
-    {
-        question: "What is the main theme of 'Eleven'?",
-        answer: "Growing older does not erase your past experiences or younger selves."
-    },
-
-    {
-        question: "How old is Rachel?",
-        answer: "Rachel is eleven years old."
-    },
-
-    {
-        question: "Why does Rachel become upset?",
-        answer: "Mrs. Price makes her wear a red sweater that Rachel says is not hers."
-    },
-
-    {
-        question: "Who actually owns the red sweater?",
-        answer: "Phyllis Lopez."
-    },
-
-    {
-        question: "What does the red sweater represent?",
-        answer: "Rachel's embarrassment, frustration, and feeling of being misunderstood."
-    },
-
-    {
-        question: "What is one simile used to describe the sweater?",
-        answer: "Rachel compares the sweater to a big red mountain."
+    if (section) {
+      section.classList.add("active");
     }
 
-];
+    window.scrollTo(0, 0);
 
-let currentCard = 0;
-let showingAnswer = false;
-
-
-function flipCard() {
-
-    showingAnswer = !showingAnswer;
-
-    if (showingAnswer) {
-
-        document.getElementById("flashcardText").textContent =
-            flashcards[currentCard].answer;
-
-    } else {
-
-        document.getElementById("flashcardText").textContent =
-            flashcards[currentCard].question;
-
-    }
-}
-
-
-function nextCard() {
-
-    currentCard++;
-
-    if (currentCard >= flashcards.length) {
-        currentCard = 0;
+    if (id === "eleven-flashcards") {
+      englishCardIndex = 0;
+      showEnglishCard();
     }
 
-    showingAnswer = false;
-
-    document.getElementById("flashcardText").textContent =
-        flashcards[currentCard].question;
-}
-
-
-function previousCard() {
-
-    currentCard--;
-
-    if (currentCard < 0) {
-        currentCard = flashcards.length - 1;
+    if (id === "eleven-quiz") {
+      startEnglishQuiz();
     }
 
-    showingAnswer = false;
+    if (id === "math-flashcards") {
+      mathCardIndex = 0;
+      showMathCard();
+    }
 
-    document.getElementById("flashcardText").textContent =
-        flashcards[currentCard].question;
-}
+    if (id === "math-quiz") {
+      startMathQuiz();
+    }
+  }
 
 
-/* QUIZ */
+  // =========================
+  // ENGLISH FLASHCARDS
+  // =========================
 
-const questions = [
-
+  const englishCards = [
     {
-        question: "How old is Rachel?",
-        answers: ["9", "10", "11", "12"],
-        correct: 2
+      question: "How old is Rachel?",
+      answer: "Rachel is turning eleven."
     },
-
     {
-        question: "Who makes Rachel wear the red sweater?",
-        answers: [
-            "Phyllis",
-            "Mrs. Price",
-            "Sylvia",
-            "Rachel's mother"
-        ],
-        correct: 1
+      question: "What is the main idea of Eleven?",
+      answer: "Growing older does not erase your younger experiences. They remain part of who you are."
     },
-
     {
-        question: "Who does the red sweater actually belong to?",
-        answers: [
-            "Rachel",
-            "Sylvia",
-            "Phyllis Lopez",
-            "Mrs. Price"
-        ],
-        correct: 2
+      question: "What causes Rachel's embarrassment?",
+      answer: "Her teacher incorrectly believes that the red sweater belongs to Rachel."
     },
-
     {
-        question: "What is an important idea in the story?",
-        answers: [
-            "Growing older erases your past.",
-            "You never change as you grow.",
-            "Your younger experiences remain part of you.",
-            "Teachers are always correct."
-        ],
-        correct: 2
+      question: "What does the red sweater represent?",
+      answer: "It represents Rachel's embarrassment, frustration, and feeling of being misunderstood."
     },
-
     {
-        question: "What does the red sweater symbolize?",
-        answers: [
-            "Happiness",
-            "Rachel's embarrassment and frustration",
-            "Friendship",
-            "School success"
-        ],
-        correct: 1
+      question: "What literary device is used when the sweater is compared to a mountain?",
+      answer: "A simile."
+    },
+    {
+      question: "What happens at the end?",
+      answer: "Phyllis says the sweater belongs to her, and Rachel gives it to her."
+    }
+  ];
+
+  let englishCardIndex = 0;
+
+  function showEnglishCard() {
+
+    const card = englishCards[englishCardIndex];
+
+    document.getElementById("english-card-question").textContent =
+      card.question;
+
+    const answer =
+      document.getElementById("english-card-answer");
+
+    answer.textContent = card.answer;
+    answer.classList.add("hidden");
+
+    document.getElementById("english-card-count").textContent =
+      "Card " + (englishCardIndex + 1) + " of " + englishCards.length;
+  }
+
+  function showEnglishAnswer() {
+
+    document
+      .getElementById("english-card-answer")
+      .classList.remove("hidden");
+  }
+
+  function nextEnglishCard() {
+
+    englishCardIndex++;
+
+    if (englishCardIndex >= englishCards.length) {
+      englishCardIndex = 0;
     }
 
-];
-
-let currentQuestion = 0;
-let score = 0;
+    showEnglishCard();
+  }
 
 
-function startQuiz() {
+  // =========================
+  // ENGLISH QUIZ
+  // =========================
 
-    currentQuestion = 0;
-    score = 0;
-
-    openSection("quiz");
-
-    showQuestion();
-}
-
-
-function showQuestion() {
-
-    const q = questions[currentQuestion];
-
-    if (!q) {
-
-        document.getElementById("question").textContent =
-            "🎉 Quiz Complete!";
-
-        document.getElementById("answers").innerHTML =
-            "<p class='score'>You scored " +
-            score +
-            " out of " +
-            questions.length +
-            "!</p>" +
-            "<button onclick='startQuiz()'>🔄 Try Again</button>";
-
-        return;
+  const englishQuiz = [
+    {
+      question: "How old is Rachel?",
+      options: ["9", "10", "11", "12"],
+      answer: "11"
+    },
+    {
+      question: "Who is Rachel's teacher?",
+      options: ["Mrs. Price", "Mrs. Lopez", "Mrs. Garcia", "Mrs. Smith"],
+      answer: "Mrs. Price"
+    },
+    {
+      question: "What item causes Rachel's embarrassment?",
+      options: ["A hat", "A red sweater", "A backpack", "A shoe"],
+      answer: "A red sweater"
+    },
+    {
+      question: "What is one major theme of the story?",
+      options: [
+        "Growing older erases the past",
+        "Past experiences remain part of us",
+        "Teachers are always correct",
+        "Being eleven is easy"
+      ],
+      answer: "Past experiences remain part of us"
     }
+  ];
 
-    document.getElementById("question").textContent =
-        q.question;
+  let englishScore = 0;
 
-    document.getElementById("quizMessage").textContent = "";
+  function startEnglishQuiz() {
 
-    const answers = document.getElementById("answers");
+    englishScore = 0;
 
-    answers.innerHTML = "";
+    const container =
+      document.getElementById("english-quiz-container");
 
-    q.answers.forEach(function(answer, index) {
+    container.innerHTML = "";
 
-        const button = document.createElement("button");
+    englishQuiz.forEach(function(item, index) {
+
+      const questionDiv =
+        document.createElement("div");
+
+      questionDiv.className = "question";
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        (index + 1) + ". " + item.question;
+
+      questionDiv.appendChild(title);
+
+      item.options.forEach(function(option) {
+
+        const button =
+          document.createElement("button");
 
         button.className = "option";
-
-        button.textContent = answer;
+        button.textContent = option;
 
         button.onclick = function() {
-            answerQuestion(index);
+
+          const buttons =
+            questionDiv.querySelectorAll("button");
+
+          buttons.forEach(function(btn) {
+            btn.disabled = true;
+          });
+
+          if (option === item.answer) {
+
+            button.textContent += " ✅";
+            englishScore++;
+
+          } else {
+
+            button.textContent += " ❌";
+
+          }
+
+          if (index === englishQuiz.length - 1) {
+
+            const score =
+              document.createElement("div");
+
+            score.className = "score";
+
+            score.textContent =
+              "Score: " +
+              englishScore +
+              " / " +
+              englishQuiz.length;
+
+            container.appendChild(score);
+          }
         };
 
-        answers.appendChild(button);
+        questionDiv.appendChild(button);
+      });
 
+      container.appendChild(questionDiv);
     });
-}
+  }
 
 
-function answerQuestion(selected) {
+  // =========================
+  // MATH FLASHCARDS
+  // =========================
 
-    const q = questions[currentQuestion];
+  const mathCards = [
+    {
+      question: "How do you multiply decimals?",
+      answer: "Multiply normally, then count the total decimal places and place the decimal in the answer."
+    },
+    {
+      question: "What is 2.4 × 1.3?",
+      answer: "3.12"
+    },
+    {
+      question: "How do you multiply fractions?",
+      answer: "Multiply numerator × numerator and denominator × denominator."
+    },
+    {
+      question: "What is 2/3 × 4/5?",
+      answer: "8/15"
+    },
+    {
+      question: "What method can you use to divide fractions?",
+      answer: "Keep, Change, Flip."
+    },
+    {
+      question: "What is 2/3 ÷ 4/5?",
+      answer: "5/6"
+    },
+    {
+      question: "What should you do before adding fractions with different denominators?",
+      answer: "Find a common denominator."
+    },
+    {
+      question: "What is 1/2 + 1/4?",
+      answer: "3/4"
+    },
+    {
+      question: "What should you do before subtracting fractions with different denominators?",
+      answer: "Find a common denominator."
+    },
+    {
+      question: "What is 5/6 − 2/6?",
+      answer: "1/2"
+    }
+  ];
 
-    if (selected === q.correct) {
-        score++;
+  let mathCardIndex = 0;
+
+  function showMathCard() {
+
+    const card = mathCards[mathCardIndex];
+
+    document.getElementById("math-card-question").textContent =
+      card.question;
+
+    const answer =
+      document.getElementById("math-card-answer");
+
+    answer.textContent = card.answer;
+    answer.classList.add("hidden");
+
+    document.getElementById("math-card-count").textContent =
+      "Card " + (mathCardIndex + 1) + " of " + mathCards.length;
+  }
+
+  function showMathAnswer() {
+
+    document
+      .getElementById("math-card-answer")
+      .classList.remove("hidden");
+  }
+
+  function nextMathCard() {
+
+    mathCardIndex++;
+
+    if (mathCardIndex >= mathCards.length) {
+      mathCardIndex = 0;
     }
 
-    currentQuestion++;
-
-    showQuestion();
-}
+    showMathCard();
+  }
 
 
-/* START AT HOME */
+  // =========================
+  // MATH QUIZ
+  // =========================
 
-openSection("home"
-            
+  const mathQuiz = [
+    {
+      question: "What is 2.4 × 1.3?",
+      options: ["3.12", "2.7", "4.2", "31.2"],
+      answer: "3.12"
+    },
+    {
+      question: "What is 2/3 × 4/5?",
+      options: ["6/8", "8/15", "4/15", "2/5"],
+      answer: "8/15"
+    },
+    {
+      question: "What is 2/3 ÷ 4/5?",
+      options: ["5/6", "8/15", "2/5", "6/5"],
+      answer: "5/6"
+    },
+    {
+      question: "What is 1/2 + 1/4?",
+      options: ["1/6", "2/4", "3/4", "1/2"],
+      answer: "3/4"
+    },
+    {
+      question: "What is 5/6 − 2/6?",
+      options: ["3/6", "1/2", "2/6", "7/6"],
+      answer: "1/2"
+    },
+    {
+      question: "What should you do when adding fractions with different denominators?",
+      options: [
+        "Multiply the numerators only",
+        "Find a common denominator",
+        "Flip both fractions",
+        "Ignore the denominators"
+      ],
+      answer: "Find a common denominator"
+    }
+  ];
+
+  let mathScore = 0;
+
+  function startMathQuiz() {
+
+    mathScore = 0;
+
+    const container =
+      document.getElementById("math-quiz-container");
+
+    container.innerHTML = "";
+
+    mathQuiz.forEach(function(item, index) {
+
+      const questionDiv =
+        document.createElement("div");
+
+      questionDiv.className = "question";
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        (index + 1) + ". " + item.question;
+
+      questionDiv.appendChild(title);
+
+      item.options.forEach(function(option) {
+
+        const button =
+          document.createElement("button");
+
+        button.className = "option";
+        button.textContent = option;
+
+        button.onclick = function() {
+
+          const buttons =
+            questionDiv.querySelectorAll("button");
+
+          buttons.forEach(function(btn) {
+            btn.disabled = true;
+          });
+
+          if (option === item.answer) {
+
+            button.textContent += " ✅";
+            mathScore++;
+
+          } else {
+
+            button.textContent += " ❌";
+
+          }
+
+          if (index === mathQuiz.length - 1) {
+
+            const score =
+              document.createElement("div");
+
+            score.className = "score";
+
+            score.textContent =
+              "Score: " +
+              mathScore +
+              " / " +
+              mathQuiz.length;
+
+            container.appendChild(score);
+          }
+        };
+
+        questionDiv.appendChild(button);
+      });
+
+      container.appendChild(questionDiv);
+    });
+  }
+
+
+  // =========================
+  // START
+  // =========================
+
+  showEnglishCard();
+  showMathCard();
+
+</script>
+
+</body>
+</html>
