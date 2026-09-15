@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>My Study Hub</title>
 
 <style>
@@ -14,16 +13,16 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #eef6ff;
-  color: #17324d;
+  background: #edf6ff;
+  color: #183b56;
 }
 
 /* HEADER */
 
 header {
-  background: #3d8edb;
+  background: #4b9be8;
   color: white;
-  padding: 25px 20px;
+  padding: 28px 20px;
   text-align: center;
 }
 
@@ -51,16 +50,17 @@ nav {
 
 nav button {
   border: none;
-  background: #e4f1ff;
-  color: #23699e;
+  background: #e3f1ff;
+  color: #2773ad;
   padding: 10px 18px;
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
 }
 
 nav button:hover {
-  background: #c9e4ff;
+  background: #cde6ff;
 }
 
 /* MAIN */
@@ -91,7 +91,7 @@ main {
   margin-bottom: 8px;
 }
 
-/* SUBJECT GRID */
+/* SUBJECT CARDS */
 
 .subject-grid {
   display: grid;
@@ -101,7 +101,7 @@ main {
 
 .subject {
   background: white;
-  border-radius: 16px;
+  border-radius: 15px;
   padding: 25px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(40,90,130,0.12);
@@ -111,10 +111,9 @@ main {
 
 .subject:hover {
   transform: translateY(-4px);
-  box-shadow: 0 7px 18px rgba(40,90,130,0.18);
 }
 
-.subject .icon {
+.subject-icon {
   font-size: 45px;
 }
 
@@ -122,19 +121,23 @@ main {
   margin: 12px 0 6px;
 }
 
-/* LESSONS */
+.subject p {
+  color: #58768e;
+}
+
+/* LESSON CARDS */
 
 .lesson-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 18px;
   margin-top: 20px;
 }
 
 .lesson-card {
   background: white;
-  border-radius: 16px;
-  padding: 25px;
+  border-radius: 15px;
+  padding: 24px;
   box-shadow: 0 4px 12px rgba(40,90,130,0.12);
   cursor: pointer;
   transition: 0.2s;
@@ -145,30 +148,31 @@ main {
 }
 
 .lesson-card h3 {
+  color: #287abd;
   margin-top: 0;
-  color: #2877b7;
 }
 
 .lesson-card p {
+  color: #58768e;
   line-height: 1.5;
 }
 
-/* CONTENT */
+/* CONTENT BOX */
 
 .content-box {
   background: white;
-  border-radius: 16px;
+  border-radius: 15px;
   padding: 25px;
   margin-top: 18px;
   box-shadow: 0 4px 12px rgba(40,90,130,0.12);
 }
 
 .content-box h2 {
-  color: #2877b7;
+  color: #287abd;
 }
 
 .content-box h3 {
-  color: #3d8edb;
+  color: #388bd0;
 }
 
 .content-box p {
@@ -180,77 +184,124 @@ main {
   line-height: 1.5;
 }
 
-/* BUTTONS */
+/* BACK BUTTON */
 
 .back-btn {
-  background: #3d8edb;
+  border: none;
+  background: #4b9be8;
   color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.small-btn {
-  background: #e4f1ff;
-  color: #23699e;
-  border: none;
-  padding: 9px 15px;
+  padding: 10px 17px;
   border-radius: 9px;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* LESSON MENU */
+
+.lesson-menu {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.lesson-menu button {
+  border: none;
+  background: #e3f1ff;
+  color: #287abd;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.lesson-menu button:hover {
+  background: #cde6ff;
+}
+
+.lesson-section {
+  display: none;
+}
+
+.lesson-section.active {
+  display: block;
 }
 
 /* FLASHCARDS */
 
 .flashcard {
   background: #f0f8ff;
-  border: 2px solid #c8e4ff;
+  border: 2px solid #cce5fb;
   border-radius: 12px;
   padding: 18px;
   margin: 12px 0;
 }
 
+.flashcard h4 {
+  margin-top: 0;
+  color: #287abd;
+}
+
 /* QUIZ */
 
-.question {
-  background: #f7fbff;
+.quiz-question {
+  background: #f4faff;
   border-radius: 12px;
   padding: 18px;
   margin: 15px 0;
+  border: 1px solid #d7ebfa;
 }
 
-.question button {
+.quiz-question button {
   display: block;
   width: 100%;
-  text-align: left;
   margin: 8px 0;
-  padding: 10px;
+  padding: 11px;
   border: 1px solid #c5def5;
   background: white;
-  border-radius: 8px;
+  border-radius: 9px;
   cursor: pointer;
+  text-align: left;
 }
 
-.question button:hover {
-  background: #e8f4ff;
+.quiz-question button:hover {
+  background: #e7f4ff;
 }
 
-.result {
+.quiz-result {
   font-weight: bold;
   margin-top: 15px;
+  font-size: 18px;
+}
+
+/* VOCAB */
+
+.vocab {
+  background: #f5faff;
+  border-left: 5px solid #4b9be8;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
 }
 
 /* MOBILE */
 
 @media (max-width: 650px) {
+
+  header h1 {
+    font-size: 27px;
+  }
+
   .lesson-grid {
     grid-template-columns: 1fr;
   }
 
-  header h1 {
-    font-size: 27px;
+  .lesson-menu {
+    flex-direction: column;
+  }
+
+  .lesson-menu button {
+    width: 100%;
   }
 }
 </style>
@@ -272,7 +323,7 @@ main {
 
 <main>
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
 
 <section id="home" class="page active">
 
@@ -284,19 +335,19 @@ main {
   <div class="subject-grid">
 
     <div class="subject" onclick="showPage('english')">
-      <div class="icon">📖</div>
+      <div class="subject-icon">📖</div>
       <h3>English</h3>
       <p>Literature, reading and vocabulary</p>
     </div>
 
     <div class="subject" onclick="showPage('math')">
-      <div class="icon">➗</div>
+      <div class="subject-icon">➗</div>
       <h3>Math</h3>
       <p>Fractions, decimals and more</p>
     </div>
 
     <div class="subject" onclick="showPage('science')">
-      <div class="icon">🔬</div>
+      <div class="subject-icon">🔬</div>
       <h3>Science</h3>
       <p>Chemistry, Biology and Physics</p>
     </div>
@@ -306,37 +357,27 @@ main {
 </section>
 
 
-<!-- ENGLISH -->
+<!-- ================= ENGLISH ================= -->
 
 <section id="english" class="page">
 
-  <button class="back-btn" onclick="showPage('home')">← Back</button>
+  <button class="back-btn" onclick="showPage('home')">← Home</button>
 
   <h2>📖 English</h2>
   <p>Choose a lesson.</p>
 
   <div class="lesson-grid">
 
-    <!-- ELEVEN -->
-
     <div class="lesson-card" onclick="showPage('eleven')">
       <h3>📕 Eleven</h3>
       <p><b>By Sandra Cisneros</b></p>
-      <p>
-        Study the story, vocabulary, theme,
-        flashcards and quiz.
-      </p>
+      <p>Study the story, flashcards and quiz.</p>
     </div>
 
-    <!-- THE GAME -->
-
-    <div class="lesson-card" onclick="showPage('thegame')">
+    <div class="lesson-card" onclick="showPage('game')">
       <h3>🏀 The Game</h3>
       <p><b>Basketball Story</b></p>
-      <p>
-        Study the background, Pages 1–7,
-        vocabulary, theme and quiz.
-      </p>
+      <p>Background, Pages 1–7, vocabulary, flashcards and quiz.</p>
     </div>
 
   </div>
@@ -344,7 +385,7 @@ main {
 </section>
 
 
-<!-- ELEVEN -->
+<!-- ================= ELEVEN ================= -->
 
 <section id="eleven" class="page">
 
@@ -354,46 +395,121 @@ main {
 
     <h2>📕 Eleven — Sandra Cisneros</h2>
 
-    <h3>Study</h3>
-
-    <p>
-      Eleven is a story about growing up and how,
-      even when someone gets older, they can still
-      sometimes feel like a younger version of themselves.
-    </p>
-
-    <h3>Important Ideas</h3>
-
-    <ul>
-      <li>Growing up</li>
-      <li>Identity</li>
-      <li>Embarrassment</li>
-      <li>Standing up for yourself</li>
-      <li>Different ages and emotions</li>
-    </ul>
-
-    <h3>Vocabulary</h3>
-
-    <div class="flashcard">
-      <b>Identity</b>
-      <p>The qualities and characteristics that make someone who they are.</p>
+    <div class="lesson-menu">
+      <button onclick="lessonTab('eleven-study')">📖 Study</button>
+      <button onclick="lessonTab('eleven-flashcards')">🃏 Flashcards</button>
+      <button onclick="lessonTab('eleven-quiz')">📝 Quiz</button>
     </div>
 
-    <div class="flashcard">
-      <b>Embarrassed</b>
-      <p>Feeling uncomfortable or ashamed because of something that happened.</p>
+    <!-- STUDY -->
+
+    <div id="eleven-study" class="lesson-section active">
+
+      <h3>Study</h3>
+
+      <p>
+        “Eleven” is a story about growing up, identity and how
+        getting older does not always mean that you stop feeling
+        like your younger self.
+      </p>
+
+      <h3>Important Ideas</h3>
+
+      <ul>
+        <li>Growing up</li>
+        <li>Identity</li>
+        <li>Embarrassment</li>
+        <li>Standing up for yourself</li>
+        <li>Childhood and adulthood</li>
+      </ul>
+
+      <h3>Vocabulary</h3>
+
+      <div class="vocab">
+        <b>Identity</b>
+        <p>The qualities that make someone who they are.</p>
+      </div>
+
+      <div class="vocab">
+        <b>Embarrassed</b>
+        <p>Feeling uncomfortable or ashamed because of something that happened.</p>
+      </div>
+
     </div>
 
-    <h3>Flashcards</h3>
+    <!-- FLASHCARDS -->
 
-    <div class="flashcard">
-      <b>What is one major theme?</b>
-      <p>Growing up and understanding yourself.</p>
+    <div id="eleven-flashcards" class="lesson-section">
+
+      <h3>🃏 Eleven Flashcards</h3>
+
+      <div class="flashcard">
+        <h4>What is one major theme?</h4>
+        <p>Growing up and understanding yourself.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What can the number eleven represent?</h4>
+        <p>Being between childhood and becoming older.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What does identity mean?</h4>
+        <p>The qualities and characteristics that make someone who they are.</p>
+      </div>
+
     </div>
 
-    <div class="flashcard">
-      <b>What can the number eleven represent?</b>
-      <p>Being between childhood and becoming older.</p>
+    <!-- QUIZ -->
+
+    <div id="eleven-quiz" class="lesson-section">
+
+      <h3>📝 Eleven Quiz</h3>
+
+      <div class="quiz-question">
+        <p><b>1. What is one major idea in “Eleven”?</b></p>
+
+        <button onclick="checkAnswer(this, true)">
+          Growing up and understanding yourself
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Winning a basketball championship
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Building a science experiment
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Traveling around the world
+        </button>
+
+        <p class="quiz-feedback"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p><b>2. What does identity mean?</b></p>
+
+        <button onclick="checkAnswer(this, false)">
+          A type of sport
+        </button>
+
+        <button onclick="checkAnswer(this, true)">
+          The qualities that make someone who they are
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          A school subject
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          A kind of food
+        </button>
+
+        <p class="quiz-feedback"></p>
+      </div>
+
     </div>
 
   </div>
@@ -401,9 +517,9 @@ main {
 </section>
 
 
-<!-- THE GAME -->
+<!-- ================= THE GAME ================= -->
 
-<section id="thegame" class="page">
+<section id="game" class="page">
 
   <button class="back-btn" onclick="showPage('english')">← English</button>
 
@@ -411,285 +527,528 @@ main {
 
     <h2>🏀 The Game</h2>
 
-    <h3>Background</h3>
+    <div class="lesson-menu">
+      <button onclick="lessonTab('game-study')">📖 Study</button>
+      <button onclick="lessonTab('game-flashcards')">🃏 Flashcards</button>
+      <button onclick="lessonTab('game-quiz')">📝 Quiz</button>
+    </div>
 
-    <p>
-      Basketball is a fast-moving game with two main objectives:
-      scoring by getting the ball into the other team's hoop and
-      stopping the other team from scoring.
-    </p>
 
-    <p>
-      Up to five players from each team can be on the court.
-      Baskets can be worth 1, 2, or 3 points, and the team with
-      the most points wins.
-    </p>
+    <!-- GAME STUDY -->
 
-    <p>
-      The story follows an important school basketball game.
-    </p>
+    <div id="game-study" class="lesson-section active">
 
-    <hr>
+      <h3>Background</h3>
 
-    <h3>Page 1</h3>
-
-    <p>
-      The team has practiced extensively and feels ready for the
-      championship. A huge crowd arrives, but the team has not
-      seen the opposing team play before.
-    </p>
-
-    <p>
-      The opposing team gets the first tap and moves the ball
-      extremely quickly. They score early while the narrator's
-      team struggles to respond.
-    </p>
-
-    <p>
-      The score quickly becomes 6–0 and then 8–0.
-      The opposing team appears to be enjoying themselves.
-    </p>
-
-    <hr>
-
-    <h3>Page 2</h3>
-
-    <p>
-      After another mistake and a foul, Mr. Reese calls a timeout.
-      He tells the players to stay calm, take their time and trade
-      baskets instead of rushing.
-    </p>
-
-    <p>
-      He uses hand signals to communicate with the players.
-      Chalky, Sam and Leon work together to create an opportunity
-      for Clyde to score the team's first points.
-    </p>
-
-    <div class="flashcard">
-      <b>Vocabulary: Rebound</b>
       <p>
-        A rebound happens when the ball bounces back after a missed shot.
+        Basketball is a fast-moving game with two main objectives:
+        scoring by getting the ball into the other team's hoop and
+        stopping the other team from scoring.
       </p>
+
+      <p>
+        Up to five players from each team can be on the court.
+        Baskets can be worth 1, 2 or 3 points.
+      </p>
+
+      <p>
+        The team with the most points wins.
+        The story is about an important school basketball game.
+      </p>
+
+
+      <h3>Page 1</h3>
+
+      <p>
+        The team has practiced extensively and feels ready for the
+        championship. A huge crowd arrives, but they have not seen
+        the opposing team play before.
+      </p>
+
+      <p>
+        The opposing team gets the first tap and moves the ball
+        extremely quickly. They score early while the narrator's
+        team struggles to respond.
+      </p>
+
+      <p>
+        The score quickly becomes 6–0 and then 8–0.
+        The opposing team appears to be enjoying themselves.
+      </p>
+
+
+      <h3>Page 2</h3>
+
+      <p>
+        After another mistake and a foul, Mr. Reese calls a timeout.
+        He tells the players to stay calm, take their time and trade
+        baskets instead of rushing.
+      </p>
+
+      <p>
+        He uses hand signals to communicate with the players.
+        Chalky, Sam and Leon work together to create an opportunity
+        for Clyde to score the team's first points.
+      </p>
+
+      <div class="vocab">
+        <b>Rebound</b>
+        <p>The ball bouncing back after a missed shot.</p>
+      </div>
+
+
+      <h3>Page 3</h3>
+
+      <p>
+        The opposing team's quick passing continues, but the narrator's
+        team begins to defend better.
+      </p>
+
+      <p>
+        Chalky blocks an outside shot and the team gets a chance to
+        score on a fast break.
+      </p>
+
+      <p>
+        Mr. Reese puts the narrator into the game.
+        The narrator is nervous but remembers the coach's advice:
+        when you don't know what to do, keep moving.
+      </p>
+
+
+      <h3>Page 4</h3>
+
+      <p>
+        The narrator's movement helps create an easy scoring opportunity.
+        Later, the narrator catches the ball near the corner and makes
+        an important shot.
+      </p>
+
+      <p>
+        The opposing team begins paying special attention to the narrator.
+        The narrator scores again with a lay-up.
+      </p>
+
+      <p>
+        The team's defense improves as Chalky, Sam and Leon work together
+        to control the defensive backboard.
+      </p>
+
+      <h3>Mood Change</h3>
+
+      <p>
+        At first, the team is nervous and discouraged.
+        As they begin playing better and scoring, they become
+        more confident and hopeful.
+      </p>
+
+
+      <h3>Page 5</h3>
+
+      <p>
+        The score is 36–29, with the opposing team ahead by seven points.
+        Mr. Reese remains calm and tells the players to stay cool.
+      </p>
+
+      <p>
+        The team follows his signals and slowly gets closer to
+        the opposing team.
+      </p>
+
+      <p>
+        With six minutes remaining, Mr. Reese puts the narrator and Turk
+        into the game while taking out two of the team's strongest players.
+      </p>
+
+      <p>
+        Turk unexpectedly makes an important lay-up.
+        The team continues working together, and Leon completes
+        a three-point play.
+      </p>
+
+      <p>
+        Mr. Reese then tells the team to use a strategy they had practiced:
+        putting pressure on the opposing player so that the player
+        might rush a shot.
+      </p>
+
+
+      <h3>Page 6</h3>
+
+      <p>
+        The story explains the fouling strategy. A player who is fouled
+        while shooting can receive two foul shots, while a player fouled
+        when not shooting receives one.
+      </p>
+
+      <p>
+        The narrator runs toward an opponent as if he is going to foul,
+        but stops before making contact.
+      </p>
+
+      <p>
+        The opponent becomes rushed and throws the ball wildly.
+        The ball goes over the baseline, giving the narrator's team
+        possession.
+      </p>
+
+      <p>
+        Mr. Reese removes the narrator and Turk and brings Sam and
+        Chalky back into the game.
+      </p>
+
+
+      <h3>Page 7</h3>
+
+      <p>
+        The game is almost over. The team realizes that the score
+        became tied while the narrator and Turk were playing.
+      </p>
+
+      <p>
+        Sam and Chalky help the team outscore the opponent during
+        the final minutes.
+      </p>
+
+      <p>
+        The team wins first-place trophies.
+      </p>
+
+      <p>
+        Mr. Reese explains that he is proud of them not only because
+        they won, but because they worked hard together.
+      </p>
+
+      <p>
+        Everyone applauds. The narrator cries, and Leon cries even more.
+      </p>
+
+
+      <h3>Vocabulary</h3>
+
+      <div class="vocab">
+        <b>Rebound</b>
+        <p>The ball bouncing back after a missed shot.</p>
+      </div>
+
+      <div class="vocab">
+        <b>Boo-hooing</b>
+        <p>A way of describing crying.</p>
+      </div>
+
+
+      <h3>⭐ Main Theme</h3>
+
+      <p>
+        One of the main ideas of the story is that teamwork,
+        trust, preparation and staying calm can be just as important
+        as having the strongest individual players.
+      </p>
+
     </div>
 
-    <hr>
 
-    <h3>Page 3</h3>
+    <!-- GAME FLASHCARDS -->
 
-    <p>
-      The opposing team's quick passing continues, but the narrator's
-      team begins to defend better.
-    </p>
+    <div id="game-flashcards" class="lesson-section">
 
-    <p>
-      Chalky blocks an outside shot and the team gets a chance to
-      score on a fast break.
-    </p>
+      <h3>🃏 The Game Flashcards</h3>
 
-    <p>
-      Mr. Reese eventually puts the narrator into the game.
-      The narrator is nervous but remembers the coach's advice:
-      when you don't know what to do, keep moving.
-    </p>
+      <div class="flashcard">
+        <h4>What sport is played in the story?</h4>
+        <p>Basketball.</p>
+      </div>
 
-    <hr>
+      <div class="flashcard">
+        <h4>Who is the coach?</h4>
+        <p>Mr. Reese.</p>
+      </div>
 
-    <h3>Page 4</h3>
+      <div class="flashcard">
+        <h4>What is a rebound?</h4>
+        <p>The ball bouncing back after a missed shot.</p>
+      </div>
 
-    <p>
-      The narrator's movement helps create an easy scoring opportunity.
-      Later, the narrator catches the ball near the corner and makes
-      an important shot.
-    </p>
+      <div class="flashcard">
+        <h4>How does the team's mood change?</h4>
+        <p>They change from nervous and discouraged to confident and hopeful.</p>
+      </div>
 
-    <p>
-      The opposing team begins paying special attention to the narrator.
-      The narrator scores again with a lay-up.
-    </p>
+      <div class="flashcard">
+        <h4>What helps the team succeed?</h4>
+        <p>Teamwork, preparation, strategy and trust.</p>
+      </div>
 
-    <p>
-      The team's defense also improves as Chalky, Sam and Leon work
-      together to control the defensive backboard.
-    </p>
+      <div class="flashcard">
+        <h4>What happens at the end?</h4>
+        <p>The team wins first-place trophies.</p>
+      </div>
 
-    <h3>Mood Change</h3>
+      <div class="flashcard">
+        <h4>What does “boo-hooing” mean?</h4>
+        <p>Crying.</p>
+      </div>
 
-    <p>
-      At first, the team is nervous and discouraged. As they begin
-      playing better and scoring, they become more confident and hopeful.
-    </p>
-
-    <hr>
-
-    <h3>Page 5</h3>
-
-    <p>
-      The score is 36–29, with the opposing team ahead by seven points.
-      Mr. Reese remains calm and tells the players to stay cool.
-    </p>
-
-    <p>
-      The team follows his signals and slowly gets closer to the
-      opposing team.
-    </p>
-
-    <p>
-      With six minutes remaining, Mr. Reese puts the narrator and Turk
-      into the game while taking out two of the team's strongest players.
-    </p>
-
-    <p>
-      Turk unexpectedly makes an important lay-up. The team continues
-      to work together, and Leon completes a three-point play.
-    </p>
-
-    <p>
-      Mr. Reese then tells the team to use a strategy they had practiced:
-      intentionally putting pressure on the opposing player so that
-      the player might rush a shot.
-    </p>
-
-    <hr>
-
-    <h3>Page 6</h3>
-
-    <p>
-      The story explains the fouling strategy. A player who is fouled
-      while shooting can receive two foul shots, while a player fouled
-      when not shooting receives one.
-    </p>
-
-    <p>
-      The narrator runs toward an opponent as if he is going to foul,
-      but stops before making contact. The opponent becomes rushed and
-      throws the ball wildly.
-    </p>
-
-    <p>
-      The ball goes over the baseline, giving the narrator's team
-      possession.
-    </p>
-
-    <p>
-      Mr. Reese then removes the narrator and Turk and brings Sam and
-      Chalky back into the game.
-    </p>
-
-    <hr>
-
-    <h3>Page 7</h3>
-
-    <p>
-      The game is almost over. The team realizes that the score became
-      tied while the narrator and Turk were playing.
-    </p>
-
-    <p>
-      Sam and Chalky help the team outscore the opponent during the
-      final minutes.
-    </p>
-
-    <p>
-      The team wins first-place trophies.
-    </p>
-
-    <p>
-      Mr. Reese explains that he is proud of them not only because
-      they won, but because they worked hard together.
-    </p>
-
-    <p>
-      Everyone applauds. The narrator cries, and Leon cries even more.
-    </p>
-
-    <div class="flashcard">
-      <b>Vocabulary: Boo-hooing</b>
-      <p>Another way of describing crying.</p>
     </div>
 
-    <hr>
 
-    <h3>⭐ Main Theme</h3>
+    <!-- GAME QUIZ -->
 
-    <p>
-      One of the main ideas of the story is that teamwork, trust,
-      preparation and staying calm can be just as important as having
-      the strongest individual players.
-    </p>
+    <div id="game-quiz" class="lesson-section">
 
-    <h3>🧠 Quick Review</h3>
+      <h3>📝 The Game Quiz</h3>
 
-    <ul>
-      <li>Who is the coach? Mr. Reese</li>
-      <li>What sport is being played? Basketball</li>
-      <li>What does rebound mean? The ball bouncing back after a missed shot</li>
-      <li>How does the team's mood change? From nervous and discouraged to confident and hopeful</li>
-      <li>What helps the team succeed? Teamwork, preparation, strategy and trust</li>
-    </ul>
+      <div class="quiz-question">
+
+        <p><b>1. What sport is played in the story?</b></p>
+
+        <button onclick="checkAnswer(this, true)">Basketball</button>
+        <button onclick="checkAnswer(this, false)">Football</button>
+        <button onclick="checkAnswer(this, false)">Tennis</button>
+        <button onclick="checkAnswer(this, false)">Baseball</button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>2. Who is the team's coach?</b></p>
+
+        <button onclick="checkAnswer(this, false)">Clyde</button>
+        <button onclick="checkAnswer(this, false)">Turk</button>
+        <button onclick="checkAnswer(this, true)">Mr. Reese</button>
+        <button onclick="checkAnswer(this, false)">Leon</button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>3. What does “rebound” mean?</b></p>
+
+        <button onclick="checkAnswer(this, false)">
+          A player leaving the court
+        </button>
+
+        <button onclick="checkAnswer(this, true)">
+          The ball bouncing back after a missed shot
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          A type of foul
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          A basketball player passing the ball
+        </button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>4. How does the team's mood change?</b></p>
+
+        <button onclick="checkAnswer(this, false)">
+          From happy to angry
+        </button>
+
+        <button onclick="checkAnswer(this, true)">
+          From nervous and discouraged to confident and hopeful
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          From confident to frightened
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          From bored to excited about school
+        </button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>5. What does the team learn is important?</b></p>
+
+        <button onclick="checkAnswer(this, true)">
+          Teamwork, preparation, strategy and trust
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Only having the tallest players
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Never listening to the coach
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Playing without a strategy
+        </button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- MATH -->
+<!-- ================= MATH ================= -->
 
 <section id="math" class="page">
 
   <button class="back-btn" onclick="showPage('home')">← Home</button>
 
-  <h2>➗ Math</h2>
-
   <div class="content-box">
 
-    <h3>Fractions & Decimals</h3>
+    <h2>➗ Math</h2>
 
-    <h4>Multiplying Decimals</h4>
+    <div class="lesson-menu">
+      <button onclick="lessonTab('math-study')">📖 Study</button>
+      <button onclick="lessonTab('math-flashcards')">🃏 Flashcards</button>
+      <button onclick="lessonTab('math-quiz')">📝 Quiz</button>
+    </div>
 
-    <p>
-      Multiply the numbers normally, then place the decimal point
-      based on the total number of decimal places in the factors.
-    </p>
 
-    <h4>Adding Fractions</h4>
+    <!-- MATH STUDY -->
 
-    <p>
-      When fractions have the same denominator, add their numerators
-      and keep the denominator.
-    </p>
+    <div id="math-study" class="lesson-section active">
 
-    <h4>Subtracting Fractions</h4>
+      <h3>Fractions & Decimals</h3>
 
-    <p>
-      Subtract the numerators when the denominators are the same.
-    </p>
+      <h3>Multiplying Decimals</h3>
 
-    <h4>Multiplying Fractions</h4>
+      <p>
+        Multiply the numbers normally, then place the decimal point
+        based on the total number of decimal places in the factors.
+      </p>
 
-    <p>
-      Multiply the numerators together and the denominators together.
-    </p>
+      <h3>Adding Fractions</h3>
 
-    <h4>Dividing Fractions</h4>
+      <p>
+        When fractions have the same denominator, add their numerators
+        and keep the denominator.
+      </p>
 
-    <p>
-      Keep the first fraction, change division to multiplication,
-      and use the reciprocal of the second fraction.
-    </p>
+      <h3>Subtracting Fractions</h3>
+
+      <p>
+        Subtract the numerators when the denominators are the same.
+      </p>
+
+      <h3>Multiplying Fractions</h3>
+
+      <p>
+        Multiply the numerators together and the denominators together.
+      </p>
+
+      <h3>Dividing Fractions</h3>
+
+      <p>
+        Keep the first fraction, change division to multiplication,
+        and use the reciprocal of the second fraction.
+      </p>
+
+    </div>
+
+
+    <!-- MATH FLASHCARDS -->
+
+    <div id="math-flashcards" class="lesson-section">
+
+      <h3>🃏 Math Flashcards</h3>
+
+      <div class="flashcard">
+        <h4>How do you multiply fractions?</h4>
+        <p>Multiply the numerators together and the denominators together.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>How do you divide fractions?</h4>
+        <p>Keep, change, flip: keep the first fraction, change division to multiplication, and use the reciprocal of the second.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What do you do when adding fractions with the same denominator?</h4>
+        <p>Add the numerators and keep the denominator.</p>
+      </div>
+
+    </div>
+
+
+    <!-- MATH QUIZ -->
+
+    <div id="math-quiz" class="lesson-section">
+
+      <h3>📝 Math Quiz</h3>
+
+      <div class="quiz-question">
+
+        <p><b>1. What do you do when multiplying fractions?</b></p>
+
+        <button onclick="checkAnswer(this, true)">
+          Multiply the numerators and denominators
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Add the denominators only
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Subtract the numerators
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Flip both fractions first
+        </button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>2. What is the reciprocal of 2/3?</b></p>
+
+        <button onclick="checkAnswer(this, false)">2/3</button>
+        <button onclick="checkAnswer(this, true)">3/2</button>
+        <button onclick="checkAnswer(this, false)">1/3</button>
+        <button onclick="checkAnswer(this, false)">3/1</button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- SCIENCE -->
+<!-- ================= SCIENCE ================= -->
 
 <section id="science" class="page">
 
   <button class="back-btn" onclick="showPage('home')">← Home</button>
 
   <h2>🔬 Science</h2>
+  <p>Choose a science subject.</p>
 
   <div class="lesson-grid">
 
@@ -713,7 +1072,7 @@ main {
 </section>
 
 
-<!-- CHEMISTRY -->
+<!-- ================= CHEMISTRY ================= -->
 
 <section id="chemistry" class="page">
 
@@ -723,68 +1082,211 @@ main {
 
     <h2>⚗️ Chemistry</h2>
 
-    <h3>Particles</h3>
-
-    <p>
-      Everything around us is made of tiny particles.
-      These particles are far too small to see with our eyes.
-    </p>
-
-    <h3>Elements</h3>
-
-    <p>
-      An element is a substance made from one type of atom.
-      Elements have chemical symbols.
-    </p>
-
-    <div class="flashcard">
-      <b>Fe</b>
-      <p>Iron</p>
+    <div class="lesson-menu">
+      <button onclick="lessonTab('chem-study')">📖 Study</button>
+      <button onclick="lessonTab('chem-flashcards')">🃏 Flashcards</button>
+      <button onclick="lessonTab('chem-quiz')">📝 Quiz</button>
     </div>
 
-    <div class="flashcard">
-      <b>Na</b>
-      <p>Sodium</p>
+
+    <!-- CHEMISTRY STUDY -->
+
+    <div id="chem-study" class="lesson-section active">
+
+      <h3>Particles</h3>
+
+      <p>
+        Everything around us is made of tiny particles.
+        These particles are too small to see with our eyes.
+      </p>
+
+      <h3>Elements</h3>
+
+      <p>
+        An element is a substance made from one type of atom.
+        Elements have chemical symbols.
+      </p>
+
+      <div class="vocab">
+        <b>Fe</b>
+        <p>Iron</p>
+      </div>
+
+      <div class="vocab">
+        <b>Na</b>
+        <p>Sodium</p>
+      </div>
+
+      <div class="vocab">
+        <b>Cl</b>
+        <p>Chlorine</p>
+      </div>
+
+      <h3>Compounds</h3>
+
+      <p>
+        A compound is a substance made when two or more different
+        elements are chemically joined together.
+      </p>
+
+      <p>
+        Sodium and chlorine can combine to form sodium chloride,
+        commonly known as table salt.
+      </p>
+
+      <h3>Mass</h3>
+
+      <p>
+        Mass tells us how much matter is in an object.
+      </p>
+
+      <h3>Volume</h3>
+
+      <p>
+        Volume tells us how much space something takes up.
+      </p>
+
+      <h3>Density</h3>
+
+      <p>
+        Density describes how much mass is packed into a certain volume.
+      </p>
+
+      <div class="flashcard">
+        <h4>Density Formula</h4>
+        <p>Density = Mass ÷ Volume</p>
+      </div>
+
     </div>
 
-    <div class="flashcard">
-      <b>Cl</b>
-      <p>Chlorine</p>
+
+    <!-- CHEMISTRY FLASHCARDS -->
+
+    <div id="chem-flashcards" class="lesson-section">
+
+      <h3>🃏 Chemistry Flashcards</h3>
+
+      <div class="flashcard">
+        <h4>What is Fe?</h4>
+        <p>Iron.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What is Na?</h4>
+        <p>Sodium.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What is Cl?</h4>
+        <p>Chlorine.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What is a compound?</h4>
+        <p>A substance made when two or more different elements are chemically joined.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What is volume?</h4>
+        <p>The amount of space something takes up.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What is density?</h4>
+        <p>How much mass is packed into a certain volume.</p>
+      </div>
+
+      <div class="flashcard">
+        <h4>What is the density formula?</h4>
+        <p>Density = Mass ÷ Volume.</p>
+      </div>
+
     </div>
 
-    <h3>Compounds</h3>
 
-    <p>
-      A compound is a substance made when two or more different
-      elements are chemically joined together.
-    </p>
+    <!-- CHEMISTRY QUIZ -->
 
-    <p>
-      For example, sodium and chlorine can combine to form
-      sodium chloride, commonly known as table salt.
-    </p>
+    <div id="chem-quiz" class="lesson-section">
 
-    <h3>Mass</h3>
+      <h3>📝 Chemistry Quiz</h3>
 
-    <p>
-      Mass tells us how much matter is in an object.
-    </p>
+      <div class="quiz-question">
 
-    <h3>Volume</h3>
+        <p><b>1. What element does Fe represent?</b></p>
 
-    <p>
-      Volume tells us how much space something takes up.
-    </p>
+        <button onclick="checkAnswer(this, true)">Iron</button>
+        <button onclick="checkAnswer(this, false)">Sodium</button>
+        <button onclick="checkAnswer(this, false)">Chlorine</button>
+        <button onclick="checkAnswer(this, false)">Carbon</button>
 
-    <h3>Density</h3>
+        <p class="quiz-feedback"></p>
 
-    <p>
-      Density describes how much mass is packed into a certain volume.
-    </p>
+      </div>
 
-    <div class="flashcard">
-      <b>Density Formula</b>
-      <p>Density = Mass ÷ Volume</p>
+
+      <div class="quiz-question">
+
+        <p><b>2. What does Na represent?</b></p>
+
+        <button onclick="checkAnswer(this, false)">Iron</button>
+        <button onclick="checkAnswer(this, true)">Sodium</button>
+        <button onclick="checkAnswer(this, false)">Chlorine</button>
+        <button onclick="checkAnswer(this, false)">Oxygen</button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>3. What is a compound?</b></p>
+
+        <button onclick="checkAnswer(this, false)">
+          A single type of atom
+        </button>
+
+        <button onclick="checkAnswer(this, true)">
+          A substance made from two or more different elements chemically joined
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          A measurement of space
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          A measurement of mass
+        </button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
+
+      <div class="quiz-question">
+
+        <p><b>4. What is the formula for density?</b></p>
+
+        <button onclick="checkAnswer(this, false)">
+          Mass × Volume
+        </button>
+
+        <button onclick="checkAnswer(this, true)">
+          Mass ÷ Volume
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Volume ÷ Mass
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Mass + Volume
+        </button>
+
+        <p class="quiz-feedback"></p>
+
+      </div>
+
     </div>
 
   </div>
@@ -795,6 +1297,8 @@ main {
 
 
 <script>
+
+/* ================= PAGE NAVIGATION ================= */
 
 function showPage(pageId) {
 
@@ -814,6 +1318,50 @@ function showPage(pageId) {
     top: 0,
     behavior: "smooth"
   });
+}
+
+
+/* ================= LESSON TABS ================= */
+
+function lessonTab(sectionId) {
+
+  const allSections = document.querySelectorAll(".lesson-section");
+
+  allSections.forEach(function(section) {
+    section.classList.remove("active");
+  });
+
+  const selectedSection = document.getElementById(sectionId);
+
+  if (selectedSection) {
+    selectedSection.classList.add("active");
+  }
+
+}
+
+
+/* ================= QUIZ ================= */
+
+function checkAnswer(button, correct) {
+
+  const question = button.closest(".quiz-question");
+
+  const feedback = question.querySelector(".quiz-feedback");
+
+  const buttons = question.querySelectorAll("button");
+
+  buttons.forEach(function(btn) {
+    btn.disabled = true;
+  });
+
+  if (correct) {
+    feedback.textContent = "✅ Correct!";
+    feedback.style.color = "#16834b";
+  } else {
+    feedback.textContent = "❌ Not quite — try reviewing this lesson.";
+    feedback.style.color = "#c0392b";
+  }
+
 }
 
 </script>
